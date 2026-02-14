@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career & Education Advisor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎓 Career & Education Advisor</h1>
+    <p class="subtitle">
+        Discover Your Ideal Career Path with AI-powered recommendations.
+    </p>
+
+    <div class="card">
+
+        <h2>Your Profile</h2>
+
+        <input id="skills" placeholder="Skills (e.g. Java, Python, Communication)">
+        
+        <select id="degree">
+            <option value="">Select Degree</option>
+            <option>B.Tech</option>
+            <option>BCA</option>
+            <option>BSc</option>
+            <option>MCA</option>
+            <option>MBA</option>
+        </select>
+
+        <input id="cgpa" placeholder="CGPA (0-4 or 0-10)">
+        <input id="goal" placeholder="Career Goal">
+
+        <button onclick="getCareerAdvice()">
+            ✨ Get Recommendation
+        </button>
+
+    </div>
+
+    <div id="result" class="result"></div>
+
+    <!-- DEBUG PANEL -->
+    <div id="debug-panel" class="debug-panel">
+        <h3> Debug</h3>
+        <button onclick="document.getElementById('debug-log').innerText=''">Clear</button>
+        <pre id="debug-log"></pre>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Debug helper – logs to console and on-screen panel
+    window.debug = function(...args) {
+        const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ');
+        console.log('[DEBUG]', ...args);
+        const log = document.getElementById('debug-log');
+        if (log) {
+            log.innerText += new Date().toLocaleTimeString() + ' | ' + msg + '\n';
+            log.scrollTop = log.scrollHeight;
+        }
+    };
+</script>
+</body>
+</html>
